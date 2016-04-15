@@ -1,0 +1,52 @@
+﻿<Window x:Class="AutoTrade.WorkWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoTrade"
+        mc:Ignorable="d"
+        Title="WorkWindows" Height="318.045" Width="642.857">
+    <Grid>
+        <TabControl x:Name="tabControl" TabStripPlacement="Left">
+            <TabItem Header="Добавить клиента">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label1" Content="Фамилия" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <Label x:Name="label1_Copy" Content="Имя" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <Label x:Name="label1_Copy1" Content="Отчество" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <Label x:Name="label1_Copy2" Content="Дата рождения" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <TextBox x:Name="Last_nameText" HorizontalAlignment="Left" Height="23" Margin="170,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="NameText" HorizontalAlignment="Left" Height="23" Margin="170,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="PatText" HorizontalAlignment="Left" Height="23" Margin="170,74,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="button" Content="Содать" HorizontalAlignment="Left" Margin="170,213,0,0" VerticalAlignment="Top" Width="120" Click="button_Click"/>
+                    <DatePicker x:Name="ClientDate" HorizontalAlignment="Left" Margin="170,101,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" Width="120" IsTodayHighlighted="False"/>
+                    <Label x:Name="label1_Copy3" Content="Пол" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <ComboBox x:Name="SexComboBox" HorizontalAlignment="Left" Margin="170,132,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                        <ComboBoxItem Content="М"/>
+                        <ComboBoxItem Content="Ж"/>
+                    </ComboBox>
+                    <Label x:Name="label1_Copy4" Content="Имя" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <TextBox x:Name="PasportText" HorizontalAlignment="Left" Height="23" Margin="170,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Сделка">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label12" Content="Клиент" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <Button x:Name="button2" Content="Заключить" HorizontalAlignment="Left" Margin="170,137,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="170,13,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False"/>
+                    <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="170,43,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="comboBox_Copy1" HorizontalAlignment="Left" Margin="170,70,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="comboBox_Copy2" HorizontalAlignment="Left" Margin="170,100,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label12_Copy" Content="Компания" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <Label x:Name="label12_Copy1" Content="Бренд" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                    <Label x:Name="label12_Copy2" Content="Машина" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Выход"  Height="24" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5">
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
