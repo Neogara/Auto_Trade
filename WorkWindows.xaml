@@ -5,45 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoTrade"
         mc:Ignorable="d"
-        Title="WorkWindows" Height="318.045" Width="642.857">
+        Title="WorkWindows" Height="390.644" Width="765.818">
     <Grid>
         <TabControl x:Name="tabControl" TabStripPlacement="Left">
             <TabItem Header="Добавить клиента">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="label1" Content="Фамилия" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <Label x:Name="label1_Copy" Content="Имя" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <Label x:Name="label1_Copy1" Content="Отчество" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <Label x:Name="label1_Copy2" Content="Дата рождения" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <TextBox x:Name="Last_nameText" HorizontalAlignment="Left" Height="23" Margin="170,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="NameText" HorizontalAlignment="Left" Height="23" Margin="170,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="PatText" HorizontalAlignment="Left" Height="23" Margin="170,74,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="button" Content="Содать" HorizontalAlignment="Left" Margin="170,213,0,0" VerticalAlignment="Top" Width="120" Click="button_Click"/>
-                    <DatePicker x:Name="ClientDate" HorizontalAlignment="Left" Margin="170,101,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" Width="120" IsTodayHighlighted="False"/>
-                    <Label x:Name="label1_Copy3" Content="Пол" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <ComboBox x:Name="SexComboBox" HorizontalAlignment="Left" Margin="170,132,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="323*"/>
+                        <RowDefinition Height="16*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="13"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label1" Content="Фамилия" Margin="0,10,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="22" MinWidth="22" Background="{x:Null}"/>
+                    <TextBox x:Name="Last_nameText" TextWrapping="Wrap" Text="" Margin="0,16,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black"/>
+                    <Label x:Name="label1_Copy" Content="Имя" Margin="0,37,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
+                    <TextBox x:Name="NameText" TextWrapping="Wrap" Text="" Margin="0,58,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black"/>
+                    <Label x:Name="label1_Copy1" Content="Отчество" Margin="0,81,0,0" Grid.ColumnSpan="2" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
+                    <TextBox x:Name="PatText" TextWrapping="Wrap" Text="" Margin="0,104,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black" />
+                    <Label x:Name="label1_Copy2" Content="Дата рождения" Margin="0,131,0,0" Grid.Column="1" Padding="5,5,5,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
+                    <DatePicker x:Name="ClientDate" FirstDayOfWeek="Monday" IsTodayHighlighted="False" Margin="0,156,0,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="23" MinWidth="22" Background="{x:Null}" BorderThickness="0,0,0,2" BorderBrush="Black" Foreground="{x:Null}"/>
+                    <Label x:Name="label1_Copy22" Content="Пол" Margin="0,184,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
+                    <ComboBox x:Name="SexComboBox" SelectedIndex="0" Margin="0,205,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" Background="{x:Null}" BorderBrush="Black" BorderThickness="0,0,0,2">
                         <ComboBoxItem Content="М"/>
                         <ComboBoxItem Content="Ж"/>
                     </ComboBox>
-                    <Label x:Name="label1_Copy4" Content="Имя" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <TextBox x:Name="PasportText" HorizontalAlignment="Left" Height="23" Margin="170,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label1_Copy4" Content="Паспорт" Margin="0,233,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
+                    <TextBox x:Name="PasportText" TextWrapping="Wrap" Text="" Margin="0,256,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" Grid.Column="1" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black"/>
+                    <Button x:Name="button"  Content="Содать" Margin="0,283,0,0" Width="120" Click="button_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="30" BorderThickness="2" Background="{x:Null}" BorderBrush="Black"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Сделка">
-                <Grid Background="#FFE5E5E5">
-                    <Label x:Name="label12" Content="Клиент" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <Button x:Name="button2" Content="Заключить" HorizontalAlignment="Left" Margin="170,137,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="170,13,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False"/>
-                    <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="170,43,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="comboBox_Copy1" HorizontalAlignment="Left" Margin="170,70,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="comboBox_Copy2" HorizontalAlignment="Left" Margin="170,100,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Label x:Name="label12_Copy" Content="Компания" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <Label x:Name="label12_Copy1" Content="Бренд" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                    <Label x:Name="label12_Copy2" Content="Машина" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
-                </Grid>
+            <TabItem Header="Сделка" Selector.Selected="TabItem_Selected">
+                <StackPanel Background="#FFE5E5E5" >
+                    <StackPanel Orientation="Horizontal">
+                        <Expander x:Name="expander_Copy" Header="Клиенты" Margin="0,10,0,0" ExpandDirection="Right" IsExpanded="False" MaxHeight="400">
+                            <Grid Background="#FFE5E5E5">
+                                <ListView x:Name="dataGrid_Copy1" Margin="0,0,0,0" Grid.Row="1" MouseDoubleClick="dataGrid_Copy1_MouseDoubleClick" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding ClientId}" />
+                                            <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                                            <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}" />
+                                            <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}" />
+                                            <GridViewColumn Header="Паспорт" DisplayMemberBinding="{Binding Pasport}" />
+                                            <GridViewColumn Header="Пол" DisplayMemberBinding="{Binding Sex}" />
+
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Expander>
+                        <TextBlock x:Name="ClientText" TextWrapping="WrapWithOverflow" Text="" Margin="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Expander x:Name="expander" Header="Машины" Margin="0,10,0,0" ExpandDirection="Right" MaxHeight="400" Background="{x:Null}" IsExpanded="True">
+                            <Grid Background="#FFE5E5E5">
+                                <ListView x:Name="dataGrid_Copy" Margin="0,0,0,0" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="dataGrid_Copy_MouseDoubleClick">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding AutoId}" />
+                                            <GridViewColumn Header="Серия" DisplayMemberBinding="{Binding Serial}"/>
+                                            <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding BuildDate, StringFormat=yyyy}" />
+                                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" />
+                                            <GridViewColumn Header="Пройденая дистанция" DisplayMemberBinding="{Binding Distanse}" />
+                                            <GridViewColumn Header="Бренд" DisplayMemberBinding="{Binding Brand}" />
+                                            <GridViewColumn Header="Копания" DisplayMemberBinding="{Binding Company}" />
+                                            <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Model}" />
+
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Expander>
+                        <TextBlock x:Name="AutoText" TextWrapping="WrapWithOverflow" Text="" Margin="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Button x:Name="CreateDeelButton" HorizontalAlignment="Right" Content="Совершить сделку!" Margin="0,10,30,0" VerticalAlignment="Bottom" Click="CreateDeelButton_Click" />
+                </StackPanel>
             </TabItem>
             <TabItem Header="Выход"  Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5">
-
                 </Grid>
             </TabItem>
         </TabControl>
