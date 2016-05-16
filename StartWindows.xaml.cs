@@ -28,8 +28,11 @@ namespace AutoTrade
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            WorkWindows NextPage = new WorkWindows();
+            var NextPage = new Window1();
             frame.Navigate(NextPage.Content);
+            
+
+            
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="StartWindows" Loaded="Window_Loaded">
     <Grid>
-        <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="frame" NavigationUIVisibility="Hidden" Source="/AutoTrade;component/LoginWindow.xaml"/>
 
     </Grid>
 </Window>

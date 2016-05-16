@@ -5,91 +5,174 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoTrade"
         mc:Ignorable="d"
-        Title="WorkWindows" Height="390.644" Width="765.818">
+        Title="WorkWindows" Height="447.644" Width="765.818">
     <Grid>
-        <TabControl x:Name="tabControl" TabStripPlacement="Left">
-            <TabItem Header="Добавить клиента">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="15*"/>
-                        <RowDefinition Height="323*"/>
-                        <RowDefinition Height="16*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="13"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="13"/>
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="label1" Content="Фамилия" Margin="0,10,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="22" MinWidth="22" Background="{x:Null}"/>
-                    <TextBox x:Name="Last_nameText" TextWrapping="Wrap" Text="" Margin="0,16,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black"/>
-                    <Label x:Name="label1_Copy" Content="Имя" Margin="0,37,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
-                    <TextBox x:Name="NameText" TextWrapping="Wrap" Text="" Margin="0,58,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black"/>
-                    <Label x:Name="label1_Copy1" Content="Отчество" Margin="0,81,0,0" Grid.ColumnSpan="2" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
-                    <TextBox x:Name="PatText" TextWrapping="Wrap" Text="" Margin="0,104,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black" />
-                    <Label x:Name="label1_Copy2" Content="Дата рождения" Margin="0,131,0,0" Grid.Column="1" Padding="5,5,5,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
-                    <DatePicker x:Name="ClientDate" FirstDayOfWeek="Monday" IsTodayHighlighted="False" Margin="0,156,0,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="23" MinWidth="22" Background="{x:Null}" BorderThickness="0,0,0,2" BorderBrush="Black" Foreground="{x:Null}"/>
-                    <Label x:Name="label1_Copy22" Content="Пол" Margin="0,184,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
-                    <ComboBox x:Name="SexComboBox" SelectedIndex="0" Margin="0,205,0,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" Background="{x:Null}" BorderBrush="Black" BorderThickness="0,0,0,2">
-                        <ComboBoxItem Content="М"/>
-                        <ComboBoxItem Content="Ж"/>
+        <TabControl x:Name="tabControl" TabStripPlacement="Left" Background="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+            <TabItem x:Name="AddClientItem" Header="Добавить клиента" Height="40" BorderBrush="#FF0066CC" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Background="Black">
+                <StackPanel>
+                    <Label Content="Фамилия" Margin="50,10,50,0"  Padding="0,5,0,0" Grid.RowSpan="2" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="#FF45A2FF" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <TextBox x:Name="Last_nameText" TextWrapping="Wrap" Text="" Margin="50,0"  Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <Label  Content="Имя" Margin="50,0" Grid.Column="1" Padding="0,5,0,0"  Height="25" MinWidth="22" VerticalAlignment="Center" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <TextBox x:Name="NameText" TextWrapping="Wrap" Text="" Margin="50,0" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <Label  Content="Отчество" Margin="50,0" Grid.ColumnSpan="2" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <TextBox x:Name="PatText" TextWrapping="Wrap" Text="" Margin="50,0"  Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" />
+                    <Label  Content="Дата рождения" Margin="50,0" Grid.Column="1" Padding="5,5,5,0"  VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <DatePicker x:Name="ClientDate" FirstDayOfWeek="Monday" IsTodayHighlighted="False" Margin="50,0" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderThickness="0,0,2,2" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Padding="2,2,0,0" HorizontalContentAlignment="Stretch"/>
+                    <Label  Content="Пол" Margin="50,0" Grid.Column="1" Padding="0,5,0,0" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <ComboBox x:Name="SexComboBox" SelectedIndex="0" Margin="50,0" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderThickness="0,0,1,2" MaxDropDownHeight="50" FontSize="13.333" Padding="3,3,5,3" IsSynchronizedWithCurrentItem="True" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                        <ComboBoxItem Content="М" Background="Black" BorderBrush="{x:Null}"/>
+                        <ComboBoxItem Content="Ж" Background="Black" BorderBrush="{x:Null}"/>
                     </ComboBox>
-                    <Label x:Name="label1_Copy4" Content="Паспорт" Margin="0,233,0,0" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22"/>
-                    <TextBox x:Name="PasportText" TextWrapping="Wrap" Text="" Margin="0,256,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" MinWidth="22" Grid.Column="1" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="Black"/>
-                    <Button x:Name="button"  Content="Содать" Margin="0,283,0,0" Width="120" Click="button_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="30" BorderThickness="2" Background="{x:Null}" BorderBrush="Black"/>
-                </Grid>
+                    <Label  Content="Паспорт" Margin="50,0"  Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <TextBox x:Name="PasportText" TextWrapping="Wrap" Margin="50,0" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" Grid.Column="1" BorderThickness="0,0,0,2" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <Button x:Name="button" Content="Содать" Margin="0,10,50,0" Width="120" Click="button_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25" BorderThickness="2" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="Сделка" Selector.Selected="TabItem_Selected">
-                <StackPanel Background="#FFE5E5E5" >
-                    <StackPanel Orientation="Horizontal">
-                        <Expander x:Name="expander_Copy" Header="Клиенты" Margin="0,10,0,0" ExpandDirection="Right" IsExpanded="False" MaxHeight="400">
-                            <Grid Background="#FFE5E5E5">
-                                <ListView x:Name="dataGrid_Copy1" Margin="0,0,0,0" Grid.Row="1" MouseDoubleClick="dataGrid_Copy1_MouseDoubleClick" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding ClientId}" />
-                                            <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
-                                            <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}" />
-                                            <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}" />
-                                            <GridViewColumn Header="Паспорт" DisplayMemberBinding="{Binding Pasport}" />
-                                            <GridViewColumn Header="Пол" DisplayMemberBinding="{Binding Sex}" />
+            <TabItem  x:Name="AddDeelsItem" Header="Сделка" Selector.Selected="TabItem_Selected" Height="40" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                <StackPanel Background="Black" >
+                    <StackPanel Orientation="Horizontal" Margin="10" Background="Black">
+                        <Expander x:Name="expander_Copy" Header="Клиенты" Margin="0,0,5,0" ExpandDirection="Right" IsExpanded="False" MaxHeight="400" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <ListView x:Name="dataGrid_Copy1" Margin="20,0,0,0" Grid.Row="1" MouseDoubleClick="dataGrid_Copy1_MouseDoubleClick" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding ClientId}" />
+                                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}" />
+                                        <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}" />
+                                        <GridViewColumn Header="Паспорт" DisplayMemberBinding="{Binding Pasport}" />
+                                        <GridViewColumn Header="Пол" DisplayMemberBinding="{Binding Sex}" />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
 
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Grid>
                         </Expander>
                         <TextBlock x:Name="ClientText" TextWrapping="WrapWithOverflow" Text="" Margin="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Expander x:Name="expander" Header="Машины" Margin="0,10,0,0" ExpandDirection="Right" MaxHeight="400" Background="{x:Null}" IsExpanded="True">
-                            <Grid Background="#FFE5E5E5">
-                                <ListView x:Name="dataGrid_Copy" Margin="0,0,0,0" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="dataGrid_Copy_MouseDoubleClick">
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding AutoId}" />
-                                            <GridViewColumn Header="Серия" DisplayMemberBinding="{Binding Serial}"/>
-                                            <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding BuildDate, StringFormat=yyyy}" />
-                                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" />
-                                            <GridViewColumn Header="Пройденая дистанция" DisplayMemberBinding="{Binding Distanse}" />
-                                            <GridViewColumn Header="Бренд" DisplayMemberBinding="{Binding Brand}" />
-                                            <GridViewColumn Header="Копания" DisplayMemberBinding="{Binding Company}" />
-                                            <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Model}" />
-
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Grid>
+                    <StackPanel Orientation="Horizontal" Margin="10,0">
+                        <Expander x:Name="expander" Header="Машины" Margin="0,0,5,0" ExpandDirection="Right" MaxHeight="400" Background="{x:Null}" IsExpanded="True" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="{x:Null}">
+                            <ListView x:Name="dataGrid_Copy" Margin="20,0,0,0" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="dataGrid_Copy_MouseDoubleClick" Background="{x:Null}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding AutoId}" />
+                                        <GridViewColumn Header="Серия" DisplayMemberBinding="{Binding Serial}"/>
+                                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding BuildDate, StringFormat=yyyy}" />
+                                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Prise}" />
+                                        <GridViewColumn Header="Пройденая дистанция" DisplayMemberBinding="{Binding Distanse}" />
+                                        <GridViewColumn Header="Бренд" DisplayMemberBinding="{Binding Brand}" />
+                                        <GridViewColumn Header="Копания" DisplayMemberBinding="{Binding Company}" />
+                                        <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Model}" />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </Expander>
                         <TextBlock x:Name="AutoText" TextWrapping="WrapWithOverflow" Text="" Margin="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <Button x:Name="CreateDeelButton" HorizontalAlignment="Right" Content="Совершить сделку!" Margin="0,10,30,0" VerticalAlignment="Bottom" Click="CreateDeelButton_Click" />
+                    <Button x:Name="CreateDeelButton" HorizontalAlignment="Right" Content="Совершить сделку!" Margin="0,10,20,0" VerticalAlignment="Bottom" Click="CreateDeelButton_Click" Background="Black" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderThickness="2" Height="31" Width="121" />
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Выход"  Height="24" VerticalAlignment="Top">
+            <TabItem x:Name="ViewAutoItem" Header="Просмотр Автомобилей"  Selector.Selected="TabItem_Selected_1"  Height="40" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
                 <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="dataGrid_Copy3" Margin="0,0,0,0" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="dataGrid_Copy_MouseDoubleClick" Background="Black" BorderBrush="#FF005BFF" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding AutoId}" />
+                                <GridViewColumn Header="Серия" DisplayMemberBinding="{Binding Serial}"/>
+                                <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding BuildDate, StringFormat=yyyy}" />
+                                <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Prise}" />
+                                <GridViewColumn Header="Пройденая дистанция" DisplayMemberBinding="{Binding Distanse}" />
+                                <GridViewColumn Header="Бренд" DisplayMemberBinding="{Binding Brand}" />
+                                <GridViewColumn Header="Копания" DisplayMemberBinding="{Binding Company}" />
+                                <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Model}" />
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
-        </TabControl>
+            <TabItem x:Name="ViewDeelsItem" Header="Просмотр продаж"  Selector.Selected="TabItem_Selected_2" Height="40" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="dataGrid_Copy4" Margin="0,0,0,0" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="dataGrid_Copy_MouseDoubleClick" Background="Black" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Компания" DisplayMemberBinding="{Binding Company}" />
+                                <GridViewColumn Header="Бренд" DisplayMemberBinding="{Binding Brand}"/>
+                                <GridViewColumn Header="Модел" DisplayMemberBinding="{Binding Model}" />
+                                <GridViewColumn Header="Год" DisplayMemberBinding="{Binding BuildDate, StringFormat=yyyy}" />
+                                <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DateDeel}" />
+                                <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastNameClient}" />
+                                <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding NameClient}" />
+                                <GridViewColumn Header="Паспорт" DisplayMemberBinding="{Binding PasportId}" />
+                                <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="ViewAllDeelsItem" Header="Просмотр всех продаж"  Selector.Selected="TabItem_Selected_3" Height="40" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                <ListView x:Name="dataGrid_Copy5" Margin="0,0,0,0" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="dataGrid_Copy_MouseDoubleClick" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Фамилия Менеджера" DisplayMemberBinding="{Binding LastNameWOrker}" />
+                            <GridViewColumn Header="Имя Менеджера" DisplayMemberBinding="{Binding NameWorker}" />
+                            <GridViewColumn Header="Отчество Менеджера" DisplayMemberBinding="{Binding Patronomic}" />
+                            <GridViewColumn Header="Компания" DisplayMemberBinding="{Binding Company}" />
+                            <GridViewColumn Header="Бренд" DisplayMemberBinding="{Binding Brand}"/>
+                            <GridViewColumn Header="Модел" DisplayMemberBinding="{Binding Model}" />
+                            <GridViewColumn Header="Год" DisplayMemberBinding="{Binding BuildDate, StringFormat=yyyy}" />
+                            <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DateDeel}" />
+                            <GridViewColumn Header="Фамилия Клиента" DisplayMemberBinding="{Binding LastNameClient}" />
+                            <GridViewColumn Header="Имя Клиента" DisplayMemberBinding="{Binding NameClient}" />
+                            <GridViewColumn Header="Паспорт Клиента" DisplayMemberBinding="{Binding PasportId}" />
+                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" />
 
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem x:Name="ViewAllManagerItem" Header="Просмотр Менеджеров"  Selector.Selected="TabItem_Selected_3" Height="40" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                <ListView x:Name="dataGrid_Copy6" Margin="0,0,0,0" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="dataGrid_Copy_MouseDoubleClick" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Фамилия Менеджера" DisplayMemberBinding="{Binding LastNameWOrker}" />
+                            <GridViewColumn Header="Имя Менеджера" DisplayMemberBinding="{Binding NameWorker}" />
+                            <GridViewColumn Header="Отчество Менеджера" DisplayMemberBinding="{Binding Patronomic}" />
+                            <GridViewColumn Header="Компания" DisplayMemberBinding="{Binding Company}" />
+                            <GridViewColumn Header="Бренд" DisplayMemberBinding="{Binding Brand}"/>
+                            <GridViewColumn Header="Модел" DisplayMemberBinding="{Binding Model}" />
+                            <GridViewColumn Header="Год" DisplayMemberBinding="{Binding BuildDate, StringFormat=yyyy}" />
+                            <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DateDeel}" />
+                            <GridViewColumn Header="Фамилия Клиента" DisplayMemberBinding="{Binding LastNameClient}" />
+                            <GridViewColumn Header="Имя Клиента" DisplayMemberBinding="{Binding NameClient}" />
+                            <GridViewColumn Header="Паспорт Клиента" DisplayMemberBinding="{Binding PasportId}" />
+                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" />
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem  x:Name="WorkWithManagerItem" Header="Работа с менеджера" Height="40" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                <StackPanel Background="Black">
+                    <Label x:Name="label12" Content="Фамилия" Margin="50,10,50,0" Grid.Column="1" Padding="0,5,0,0" Grid.RowSpan="2" VerticalAlignment="Center" Height="25" MinWidth="22" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <TextBox x:Name="Last_2nameText" TextWrapping="Wrap" Text="" Margin="50,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <Label x:Name="label1_C2opy" Content="Имя" Margin="50,0" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" Height="25" MinWidth="22" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <TextBox x:Name="NameTex2t" TextWrapping="Wrap" Text="" Margin="50,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <Label x:Name="label1_Cop2y1" Content="Отчество" Margin="50,0" Grid.ColumnSpan="2" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <TextBox x:Name="PatTe2xt" TextWrapping="Wrap" Text="" Margin="50,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                    <Label x:Name="label1_Cop22y1" Content="Логин" Margin="50,25,50,0" Grid.ColumnSpan="2" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <TextBox x:Name="LoginText" TextWrapping="Wrap" Text="" Margin="50,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                    <Label x:Name="label1_Cop221y1" Content="Пароль" Margin="50,0" Grid.ColumnSpan="2" Grid.Column="1" Padding="0,5,0,0" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <TextBox x:Name="PasswordText" TextWrapping="Wrap" Text="" Margin="50,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="25" MinWidth="22" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                    <Label  Content="Тип прав" Margin="50,25,50,0" Padding="0,5,0,0" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+                    <ComboBox x:Name="UserTypes" SelectedIndex="0" Margin="50,0" VerticalAlignment="Center" Height="25" MinWidth="22" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderThickness="0,0,1,2" MaxDropDownHeight="50" FontSize="13.333" Padding="3,3,5,3" IsSynchronizedWithCurrentItem="True" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                        <ComboBoxItem Content="Простые" Background="Black" BorderBrush="{x:Null}"/>
+                        <ComboBoxItem Content="Администратор" Background="Black" BorderBrush="{x:Null}"/>
+                    </ComboBox>
+                    <Button x:Name="butto2n"  Content="Содать Менеджера" Margin="0,10,50,0" Width="120" Click="butto2n_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="33" BorderThickness="2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Выход"  Height="40" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Padding="5,0" BorderThickness="0" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                <Grid/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
