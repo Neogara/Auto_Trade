@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,58 +31,67 @@ namespace AutoTrade
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //   
-            //    // Проверить логин и пас 
-            //    // узнать админ ли это 
-                WorkerClass.LoginIn(LoginText.Text, PasswordText.Password);
 
-            //    //if (admin)
-            //    //{
-            ViewTabItem(new TabItem[] {
-                     WorkPage.AddClientItem,
-                     WorkPage.AddDeelsItem,
-                     WorkPage.ViewAllDeelsItem,
-                     WorkPage.ViewAllManagerItem,
-                     WorkPage.ViewDeelsItem,
-                     WorkPage.WorkWithManagerItem,
-                     WorkPage.ViewAutoItem
-                                        });
-            //    WorkPage.Show();
+            var request = WorkerClass.LoginIn(LoginText.Text, PasswordText.Password);
+            if (request != "Done")
+            {
+                MessageBox.Show(request);
+                return;
+            }
 
-            //    return;
-            //}
+            switch (WorkerClass.UserType)
+            {
+                case 1:
+                    {
+                        ViewTabItem(new TabItem[]{
+                                WorkPage.AddClientItem,
+                                WorkPage.AddDeelsItem,
+                                WorkPage.ViewDeelsItem,
+                                WorkPage.ViewAutoItem
+                                });
+                        break;
 
-            //if (manager)
-            //{
-            //ViewTabItem(new TabItem[]
-            //{
-            //    WorkPage.AddClientItem,
-            //    WorkPage.AddDeelsItem,
-            //    WorkPage.ViewDeelsItem,
-            //    WorkPage.ViewAutoItem
-            //});
-            //WorkPage.Show();
-            // return ; 
-            //}
+                    }
 
-            MessageBox.Show("Не существующая связка логин-пароль");
+                case 2:
+                    {
+                        ViewTabItem(new TabItem[] {
+                                WorkPage.AddClientItem,
+                                WorkPage.AddDeelsItem,
+                                WorkPage.ViewAllDeelsItem,
+                                WorkPage.ViewAllManagerItem,
+                                WorkPage.ViewDeelsItem,
+                                WorkPage.WorkWithManagerItem,
+                                WorkPage.ViewAutoItem
+                                });
+                        break;
+                    }
+                default:
+                    {
+                        MessageBox.Show("Недопустимые права доступа ");
+                        return;
+                    }
+            }
+            this.Hide();
+            WorkPage.Title = string.Format("{0} {1} {2} ", WorkerClass.LastNameWorker, WorkerClass.NameWorker);
+            WorkPage.Show();
         }
 
         private void ViewTabItem(TabItem[] ViewsTabitem)
         {
-            //WorkPage.AddClientItem.Visibility = Visibility.Collapsed;
-            //WorkPage.AddDeelsItem.Visibility = Visibility.Collapsed;
-            //WorkPage.ViewAllDeelsItem.Visibility = Visibility.Collapsed;
-            //WorkPage.ViewAllManagerItem.Visibility = Visibility.Collapsed;
-            //WorkPage.ViewDeelsItem.Visibility = Visibility.Collapsed;
-            //WorkPage.WorkWithManagerItem.Visibility = Visibility.Collapsed;
-            //WorkPage.ViewAutoItem.Visibility = Visibility.Collapsed;
+            WorkPage.AddClientItem.Visibility = Visibility.Collapsed;
+            WorkPage.AddDeelsItem.Visibility = Visibility.Collapsed;
+            WorkPage.ViewAllDeelsItem.Visibility = Visibility.Collapsed;
+            WorkPage.ViewAllManagerItem.Visibility = Visibility.Collapsed;
+            WorkPage.ViewDeelsItem.Visibility = Visibility.Collapsed;
+            WorkPage.WorkWithManagerItem.Visibility = Visibility.Collapsed;
+            WorkPage.ViewAutoItem.Visibility = Visibility.Collapsed;
 
-            //for (int i = 0; i <= ViewsTabitem.Length - 1; i++)
-            //{
-            //    ViewsTabitem[i].Visibility = Visibility.Visible;
-            //}
-            //WorkPage.tabControl.SelectedValue = ViewsTabitem[0];
+            for (int i = 0; i <= ViewsTabitem.Length - 1; i++)
+            {
+                ViewsTabitem[i].Visibility = Visibility.Visible;
+            }
+            WorkPage.tabControl.SelectedValue = ViewsTabitem[0];
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

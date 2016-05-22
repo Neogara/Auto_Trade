@@ -21,18 +21,15 @@ namespace AutoTrade
 
     public partial class WorkWindows : Window
     {
-       public SqlConnection SqlServer = new SqlConnection("Data Source=SAMSUNG\\SQLEXPRESS;Initial Catalog=Company;Integrated Security=True");
-        // public SqlConnection SqlServer = new SqlConnection(WorkerClass.SqlConnect);
         
         public WorkWindows()
         {
             InitializeComponent();
-            WorkerClass.IdWorker = 1 ; // времянка 
-            
         }
 
-        private async void button_Click(object sender, RoutedEventArgs e)
+        private  void button_Click(object sender, RoutedEventArgs e)
         {
+            var  SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             var cmd = new SqlCommand() { Connection = SqlServer };
 
             cmd.CommandText = "dbo.AddNewClient";
@@ -46,7 +43,7 @@ namespace AutoTrade
             cmd.Parameters.Add("@PasportId", System.Data.SqlDbType.Char).Value = PasportText.Text;
 
             SqlServer.Open();
-            await cmd.ExecuteNonQueryAsync();
+            cmd.ExecuteNonQuery();
             MessageBox.Show("Клиент успешно добавлен");
             SqlServer.Close();
         }
@@ -60,44 +57,54 @@ namespace AutoTrade
 
         void UpdateTablesOfDellWorker(ListView ListData)
         {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             var dataSet = new DataSet();
             var adapter = new SqlDataAdapter();
             var cmd = new SqlCommand() { Connection = SqlServer };
 
             cmd.CommandText = "dbo.OpenViewDeels";
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add("@id_worker", System.Data.SqlDbType.Int).Value = DeelClass.IdActiveWorker = WorkerClass.IdWorker;
+            cmd.Parameters.Add("@Worker_user", System.Data.SqlDbType.VarChar).Value = WorkerClass.UserWorker;
             adapter.SelectCommand = cmd;
             SqlServer.Open();
 
             ListData.Items.Clear();
-            adapter.Fill(dataSet);
-            foreach (DataRow Row in dataSet.Tables[0].Rows)
+            try
             {
-                var Table = new WorkerDeelsClass()
+                adapter.Fill(dataSet);
+                foreach (DataRow Row in dataSet.Tables[0].Rows)
                 {
-                    DateDeel = (DateTime)Row[1],
+                    var Table = new WorkerDeelsClass()
+                    {
+                        DateDeel = (DateTime)Row[1],
 
-                    Serial = Row[2].ToString(),
-                    Company = Row[3].ToString(),
-                    Brand = Row[4].ToString(),
-                    Model = Row[5].ToString(),
-                    BuildDate = (DateTime)Row[6],
+                        Serial = Row[2].ToString(),
+                        Company = Row[3].ToString(),
+                        Brand = Row[4].ToString(),
+                        Model = Row[5].ToString(),
+                        BuildDate = (DateTime)Row[6],
 
-                    NameClient = Row[7].ToString(),
-                    LastNameClient = Row[8].ToString(),
-                    PasportId = Row[9].ToString(),
+                        NameClient = Row[7].ToString(),
+                        LastNameClient = Row[8].ToString(),
+                        PasportId = Row[9].ToString(),
 
-                     //Price = (long)Row[10]
-                };
+                        //Price = (long)Row[10]
+                    };
 
-                ListData.Items.Add(Table);
+                    ListData.Items.Add(Table);
+                }
             }
-            SqlServer.Close();
+            catch
+            {
+                MessageBox.Show("У вас нет права на это действие");
+            }
+            finally { SqlServer.Close();  }
+            
         } 
 
         void UpdateTablesAllDels(ListView ListData)
         {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             var dataSet = new DataSet();
             var adapter = new SqlDataAdapter();
             var cmd = new SqlCommand() { Connection = SqlServer };
@@ -140,6 +147,7 @@ namespace AutoTrade
 
         void UpdateAutoTable(ListView ListData)
         {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             var dataSet = new DataSet();
             var adapter = new SqlDataAdapter();
             var cmd = new SqlCommand() { Connection = SqlServer };
@@ -172,6 +180,7 @@ namespace AutoTrade
 
         void UpdateCLientTable()
         {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             var dataSet = new DataSet();
             var adapter = new SqlDataAdapter();
             var cmd = new SqlCommand() { Connection = SqlServer };
@@ -249,6 +258,7 @@ namespace AutoTrade
 
         private async void CreateDeelButton_Click(object sender, RoutedEventArgs e)
         {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             string result;
             if (DeelClass.IdSelectClient == 0)
             {
@@ -306,6 +316,7 @@ namespace AutoTrade
 
         private void butto2n_Click(object sender, RoutedEventArgs e)
         {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             var cmd = new SqlCommand() { Connection = SqlServer };
 
             cmd.CommandText = "dbo.CreateUser";
