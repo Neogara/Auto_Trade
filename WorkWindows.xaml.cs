@@ -21,31 +21,42 @@ namespace AutoTrade
 
     public partial class WorkWindows : Window
     {
-        
+
         public WorkWindows()
         {
             InitializeComponent();
         }
 
-        private  void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            var  SqlServer = new SqlConnection(WorkerClass.SqlConnect);
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
             var cmd = new SqlCommand() { Connection = SqlServer };
+            try
+            {
 
-            cmd.CommandText = "dbo.AddNewClient";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@Name", System.Data.SqlDbType.Char).Value = NameText.Text;
-            cmd.Parameters.Add("@Last_name", System.Data.SqlDbType.Char).Value = Last_nameText.Text;
-            cmd.Parameters.Add("@Patronymic", System.Data.SqlDbType.Char).Value = PatText.Text;
-            cmd.Parameters.Add("@Birthday", System.Data.SqlDbType.DateTime).Value = ClientDate.DisplayDate.Date;
-            cmd.Parameters.Add("@Sex", System.Data.SqlDbType.Bit).Value = SexComboBox.SelectedIndex;
-            cmd.Parameters.Add("@PasportId", System.Data.SqlDbType.Char).Value = PasportText.Text;
+                cmd.CommandText = "dbo.AddNewClient";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            SqlServer.Open();
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Клиент успешно добавлен");
-            SqlServer.Close();
+                cmd.Parameters.Add("@Name", System.Data.SqlDbType.Char).Value = NameText.Text;
+                cmd.Parameters.Add("@Last_name", System.Data.SqlDbType.Char).Value = Last_nameText.Text;
+                cmd.Parameters.Add("@Patronymic", System.Data.SqlDbType.Char).Value = PatText.Text;
+                cmd.Parameters.Add("@Birthday", System.Data.SqlDbType.DateTime).Value = ClientDate.DisplayDate.Date;
+                cmd.Parameters.Add("@Sex", System.Data.SqlDbType.Bit).Value = SexComboBox.SelectedIndex;
+                cmd.Parameters.Add("@PasportId", System.Data.SqlDbType.Char).Value = PasportText.Text;
+
+                SqlServer.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Клиент успешно добавлен");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally
+            { SqlServer.Close(); }
+
+
         }
 
         string ChekSex(bool Sex)
@@ -88,19 +99,19 @@ namespace AutoTrade
                         LastNameClient = Row[8].ToString(),
                         PasportId = Row[9].ToString(),
 
-                        //Price = (long)Row[10]
+                        Price = (long)Row[10]
                     };
 
                     ListData.Items.Add(Table);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("У вас нет права на это действие");
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
             }
-            finally { SqlServer.Close();  }
-            
-        } 
+            finally { SqlServer.Close(); }
+
+        }
 
         void UpdateTablesAllDels(ListView ListData)
         {
@@ -112,37 +123,45 @@ namespace AutoTrade
             cmd.CommandText = "Select * from dbo.ViewDeels";
             cmd.CommandType = System.Data.CommandType.Text;
             adapter.SelectCommand = cmd;
-            SqlServer.Open();
-
-            ListData.Items.Clear();
-            adapter.Fill(dataSet);
-            adapter.SelectCommand = cmd;
-            foreach (DataRow Row in dataSet.Tables[0].Rows)
+            try
             {
-                var Table = new WorkerDeelsClass()
+                SqlServer.Open();
+
+                ListData.Items.Clear();
+                adapter.Fill(dataSet);
+                adapter.SelectCommand = cmd;
+                foreach (DataRow Row in dataSet.Tables[0].Rows)
                 {
-                    
-                    DateDeel = (DateTime)Row[1],
+                    var Table = new WorkerDeelsClass()
+                    {
 
-                    Serial = Row[2].ToString(),
-                    Company = Row[3].ToString(),
-                    Brand = Row[4].ToString(),
-                    Model = Row[5].ToString(),
-                    BuildDate = (DateTime)Row[6],
+                        DateDeel = (DateTime)Row[1],
 
-                    NameClient = Row[7].ToString(),
-                    LastNameClient = Row[8].ToString(),
-                    PasportId = Row[9].ToString(),
+                        Serial = Row[2].ToString(),
+                        Company = Row[3].ToString(),
+                        Brand = Row[4].ToString(),
+                        Model = Row[5].ToString(),
+                        BuildDate = (DateTime)Row[6],
 
-                    //Price = (long)Row[10],
-                    NameWorker = Row[12].ToString(),
-                    LastNameWOrker = Row[13].ToString(),
-                    Patronomic = Row[14].ToString()
-                };
+                        NameClient = Row[7].ToString(),
+                        LastNameClient = Row[8].ToString(),
+                        PasportId = Row[9].ToString(),
 
-                ListData.Items.Add(Table);
+                        Price = (int)Row[10],
+                        NameWorker = Row[12].ToString(),
+                        LastNameWOrker = Row[13].ToString(),
+                        Patronomic = Row[14].ToString()
+                    };
+
+                    ListData.Items.Add(Table);
+                }
             }
-            SqlServer.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally { SqlServer.Close(); }
+
         }
 
         void UpdateAutoTable(ListView ListData)
@@ -155,27 +174,34 @@ namespace AutoTrade
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = " Select * from dbo.AutoInfoView";
             adapter.SelectCommand = cmd;
-            SqlServer.Open();
-
-            ListData.Items.Clear();
-            adapter.Fill(dataSet);
-            foreach (DataRow row in dataSet.Tables[0].Rows)
+            try
             {
-                var auto = new AutoClass()
-                {
-                    Serial = row[0].ToString(),
-                    BuildDate = (DateTime)row[1],
-                    Prise = (long)row[2],
-                    Distanse = (int)row[3],
-                    Brand = row[4].ToString(),
-                    Company = row[5].ToString(),
-                    Model = row[6].ToString(),
-                    AutoId = row[8].ToString(),
-                };
+                SqlServer.Open();
 
-                ListData.Items.Add(auto);
+                ListData.Items.Clear();
+                adapter.Fill(dataSet);
+                foreach (DataRow row in dataSet.Tables[0].Rows)
+                {
+                    var auto = new AutoClass()
+                    {
+                        Serial = row[0].ToString(),
+                        BuildDate = (DateTime)row[1],
+                        Prise = (long)row[2],
+                        Distanse = (int)row[3],
+                        Brand = row[4].ToString(),
+                        Company = row[5].ToString(),
+                        Model = row[6].ToString(),
+                        AutoId = row[8].ToString(),
+                    };
+
+                    ListData.Items.Add(auto);
+                }
             }
-            SqlServer.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally { SqlServer.Close(); }
         }
 
         void UpdateCLientTable()
@@ -186,30 +212,78 @@ namespace AutoTrade
             var cmd = new SqlCommand() { Connection = SqlServer };
 
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = " Select * from dbo.ClientView";
+            cmd.CommandText = " Select * from dbo.Client";
             adapter.SelectCommand = cmd;
-            SqlServer.Open();
-
-            dataGrid_Copy1.Items.Clear();
-            adapter.Fill(dataSet);
-            foreach (DataRow row in dataSet.Tables[0].Rows)
+            try
             {
-                var client = new ClientClass()
+                SqlServer.Open();
+
+                dataGrid_Copy1.Items.Clear();
+                adapter.Fill(dataSet);
+                foreach (DataRow row in dataSet.Tables[0].Rows)
                 {
+                    var client = new ClientClass()
+                    {
 
-                    Name = row[0].ToString(),
-                    LastName = row[1].ToString(),
-                    Patronymic = row[2].ToString(),
-                    Pasport = row[3].ToString(),
-                    Birthday = (DateTime)row[4],
-                    Sex = ChekSex((bool)row[5]),
-                    ClientId = row[6].ToString(),
+                        Name = row[0].ToString(),
+                        LastName = row[1].ToString(),
+                        Patronymic = row[2].ToString(),
+                        Pasport = row[3].ToString(),
+                        ClientId = row[4].ToString(),
+                        Birthday = (DateTime)row[5],
+                        Sex = ChekSex((bool)row[6]),
+                       
 
-                };
-                dataGrid_Copy1.Items.Add(client);
+                    };
+                    dataGrid_Copy1.Items.Add(client);
+                }
             }
-            SqlServer.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally { SqlServer.Close(); }
+        }
 
+        void UpdateAllWorkers(ListView ListData)
+        {
+
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
+            var dataSet = new DataSet();
+            var adapter = new SqlDataAdapter();
+            var cmd = new SqlCommand() { Connection = SqlServer };
+
+            cmd.CommandText = "Select * from dbo.Worker";
+            cmd.CommandType = System.Data.CommandType.Text;
+            adapter.SelectCommand = cmd;
+            try
+            {
+                SqlServer.Open();
+
+                ListData.Items.Clear();
+                adapter.Fill(dataSet);
+                adapter.SelectCommand = cmd;
+                foreach (DataRow Row in dataSet.Tables[0].Rows)
+                {
+                    var worker = new WorkerInfoClass()
+                    {
+                        NameWorker = Row[0].ToString(),
+                        LastNameWorker = Row[1].ToString(),
+                        Patronomic = Row[2].ToString(),
+                        UserType = (int)Row[3],
+                        UserWorker = Row[4].ToString(),
+
+                    };
+                    ListData.Items.Add(worker);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally { SqlServer.Close(); }
         }
 
         private void dataGrid_Copy_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -256,10 +330,9 @@ namespace AutoTrade
 
         }
 
-        private async void CreateDeelButton_Click(object sender, RoutedEventArgs e)
+        private void CreateDeelButton_Click(object sender, RoutedEventArgs e)
         {
             var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
-            string result;
             if (DeelClass.IdSelectClient == 0)
             {
                 MessageBox.Show("Неверно выбран Клиент");
@@ -276,23 +349,22 @@ namespace AutoTrade
             cmd.CommandText = "dbo.CreateDeel";
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@id_worker", System.Data.SqlDbType.Int).Value = DeelClass.IdActiveWorker = 1;
+            cmd.Parameters.Add("@Worker_user", System.Data.SqlDbType.VarChar).Value = WorkerClass.UserWorker;
             cmd.Parameters.Add("@id_client", System.Data.SqlDbType.Int).Value = DeelClass.IdSelectClient;
             cmd.Parameters.Add("@id_auto", System.Data.SqlDbType.Int).Value = DeelClass.IdSelectAuto;
-
-            SqlServer.Open();
             try
             {
-                await cmd.ExecuteNonQueryAsync();
-                result = "Сделка успешно совершена!";
+                SqlServer.Open();
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show ("Сделка успешно совершена!");
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                result = ex.Message;
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\" ", ex.Message));
             }
             SqlServer.Close();
-            MessageBox.Show(result);
-
+         
             UpdateAutoTable(dataGrid_Copy);
             UpdateCLientTable();
 
@@ -323,16 +395,75 @@ namespace AutoTrade
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@Name", System.Data.SqlDbType.VarChar).Value = NameTex2t.Text;
-            cmd.Parameters.Add("@Last_name", System.Data.SqlDbType.VarChar).Value = Last_2nameText.Text;
-            cmd.Parameters.Add("@Patronymic", System.Data.SqlDbType.VarChar).Value = PatTe2xt.Text;
-            cmd.Parameters.Add("@Login", System.Data.SqlDbType.VarChar).Value = ClientDate.DisplayDate.Date;
-            cmd.Parameters.Add("@Password", System.Data.SqlDbType.VarChar).Value = PasswordText.Text ;
-            cmd.Parameters.Add("@Usertype", System.Data.SqlDbType.Int).Value = UserTypes.SelectedIndex+1;
+            cmd.Parameters.Add("@LastName", System.Data.SqlDbType.VarChar).Value = Last_2nameText.Text;
+            cmd.Parameters.Add("@Pat", System.Data.SqlDbType.VarChar).Value = PatTe2xt.Text;
+            cmd.Parameters.Add("@Username", System.Data.SqlDbType.VarChar).Value = LoginText.Text;
+            cmd.Parameters.Add("@Password", System.Data.SqlDbType.VarChar).Value = PasswordText.Text;
+            cmd.Parameters.Add("@Usertype", System.Data.SqlDbType.Int).Value = UserTypes.SelectedIndex + 1;
+            try
+            {
+                SqlServer.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Рабочий успешно добавлен");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally { SqlServer.Close();}
+            
+        }
 
-            SqlServer.Open();
-            cmd.ExecuteNonQueryAsync();
-            MessageBox.Show("Клиент успешно добавлен");
-            SqlServer.Close();
+        private void TextDistanse_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ButtonAddAuto_Click(object sender, RoutedEventArgs e)
+        {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
+            var cmd = new SqlCommand() { Connection = SqlServer };
+
+            cmd.CommandText = "dbo.addNewAuto";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@Company", System.Data.SqlDbType.VarChar).Value = BrandBox.Text;
+            cmd.Parameters.Add("@Brand", System.Data.SqlDbType.VarChar).Value = TextMark.Text;
+            cmd.Parameters.Add("@Model", System.Data.SqlDbType.VarChar).Value = TextModel.Text;
+            cmd.Parameters.Add("@Serial", System.Data.SqlDbType.VarChar).Value = TextSerial.Text;
+            cmd.Parameters.Add("@Data", System.Data.SqlDbType.DateTime).Value = Date.DisplayDate.Date;
+            cmd.Parameters.Add("@Distanse", System.Data.SqlDbType.Int).Value = int.Parse(TextDistanse.Text);
+            cmd.Parameters.Add("@Price", System.Data.SqlDbType.BigInt).Value = Int64.Parse(TextPrice.Text);
+            try {
+                SqlServer.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Авто добавлено!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally { SqlServer.Close(); }
+
+        }
+
+        private void ViewAllManagerItem_Selected(object sender, RoutedEventArgs e)
+        {
+            UpdateAllWorkers(dataGrid_Copy6);
+        }
+
+        private void TabItem_Selected_4(object sender, RoutedEventArgs e)
+        {
+            WorkerClass.LoginOut();
+            Window1 LoginPage = new Window1();
+            LoginPage.Show();
+            this.Close();
+            
         }
     }
 }
+
+

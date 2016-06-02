@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoTrade"
         mc:Ignorable="d"
-        Title="Вход" Height="211.692" Width="375.691" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
+        
+    Title="Вход" Height="211.692" Width="375.691" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
     <StackPanel Margin="10" HorizontalAlignment="Center" Width="363" Background="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}">
         <StackPanel Orientation="Horizontal" Margin="15,15,15,5" HorizontalAlignment="Center" Width="275">
             <Label  Content="Логин" Margin="0,0,15,0" Padding="5,5,0,0" Height="20" MinWidth="50" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
-            <TextBox x:Name="LoginText" TextWrapping="Wrap" Text="" Margin="0,0,0,0" MinWidth="200" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" CaretBrush="{DynamicResource Button.Pressed.Border}"/>
+            <TextBox x:Name="LoginText" TextWrapping="Wrap" Text="testadm" Margin="0,0,0,0" MinWidth="200" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" CaretBrush="{DynamicResource Button.Pressed.Border}"/>
         </StackPanel>
         <StackPanel Margin="15,0,15,15" Orientation="Horizontal" HorizontalAlignment="Center" Width="275">
             <Label  Content="Пароль" Margin="0,0,15,0" Padding="5,5,0,0" Height="20" MinWidth="50" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
-            <PasswordBox x:Name="PasswordText"  MinWidth="200" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource Button.MouseOver.Background}" CaretBrush="{DynamicResource Button.Pressed.Border}"/>
+            <PasswordBox x:Name="PasswordText"  MinWidth="200" BorderThickness="0,0,0,2" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="13.333" Foreground="{DynamicResource Button.MouseOver.Background}" CaretBrush="{DynamicResource Button.Pressed.Border}" Password="123"/>
         </StackPanel>
         <Button Content="Войти" Margin="15,16,15,5" Click="Button_Click" HorizontalAlignment="Center" MinWidth="275" Background="{x:Null}" BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
         <Button Content="Просмотр" Margin="15,0,15,5" Click="Button_Click_1"  HorizontalAlignment="Center" MinWidth="275" Background="{x:Null}" BorderThickness="2" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" />

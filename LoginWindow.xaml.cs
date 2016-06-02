@@ -62,7 +62,8 @@ namespace AutoTrade
                                 WorkPage.ViewAllManagerItem,
                                 WorkPage.ViewDeelsItem,
                                 WorkPage.WorkWithManagerItem,
-                                WorkPage.ViewAutoItem
+                                WorkPage.ViewAutoItem,
+                                WorkPage.AddAuto
                                 });
                         break;
                     }
@@ -72,9 +73,10 @@ namespace AutoTrade
                         return;
                     }
             }
-            this.Hide();
-            WorkPage.Title = string.Format("{0} {1} {2} ", WorkerClass.LastNameWorker, WorkerClass.NameWorker);
+            
+            WorkPage.Title = string.Format("{0} {1}", WorkerClass.LastNameWorker, WorkerClass.NameWorker);
             WorkPage.Show();
+            this.Close();
         }
 
         private void ViewTabItem(TabItem[] ViewsTabitem)
@@ -86,6 +88,7 @@ namespace AutoTrade
             WorkPage.ViewDeelsItem.Visibility = Visibility.Collapsed;
             WorkPage.WorkWithManagerItem.Visibility = Visibility.Collapsed;
             WorkPage.ViewAutoItem.Visibility = Visibility.Collapsed;
+            WorkPage.AddAuto.Visibility = Visibility.Collapsed;
 
             for (int i = 0; i <= ViewsTabitem.Length - 1; i++)
             {
@@ -97,10 +100,14 @@ namespace AutoTrade
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            ViewTabItem(new TabItem[] { WorkPage.ViewAutoItem });
-            WorkPage.Show();
-            this.Hide();
-
+            var request = WorkerClass.LoginIn("Public_user", "123");
+            if (request == "Done")
+            {
+                ViewTabItem(new TabItem[] { WorkPage.ViewAutoItem });
+                WorkPage.Show();
+                this.Close();
+            }
+            else MessageBox.Show(request);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
