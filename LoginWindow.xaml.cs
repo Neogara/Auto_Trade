@@ -63,7 +63,8 @@ namespace AutoTrade
                                 WorkPage.ViewDeelsItem,
                                 WorkPage.WorkWithManagerItem,
                                 WorkPage.ViewAutoItem,
-                                WorkPage.AddAuto
+                                WorkPage.AddAuto,
+                                WorkPage.ViewAllLogs
                                 });
                         break;
                     }
@@ -89,7 +90,7 @@ namespace AutoTrade
             WorkPage.WorkWithManagerItem.Visibility = Visibility.Collapsed;
             WorkPage.ViewAutoItem.Visibility = Visibility.Collapsed;
             WorkPage.AddAuto.Visibility = Visibility.Collapsed;
-
+            WorkPage.ViewAllLogs.Visibility = Visibility.Collapsed;
             for (int i = 0; i <= ViewsTabitem.Length - 1; i++)
             {
                 ViewsTabitem[i].Visibility = Visibility.Visible;

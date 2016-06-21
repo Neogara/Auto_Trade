@@ -104,6 +104,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Documentation\Пояснительная записка Мельдианов 303.docx" />
+    <None Include="Documentation\презентация.pptx" />
+    <None Include="Documentation\Техническое задание2016.doc.docx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB_script_generate.sql" />
+    <Content Include="Documentation\DB_script_generate.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,3 +17,4 @@ C:\Users\Ольга\Documents\Visual Studio 2015\Projects\AutoTrade\AutoTrade\ob
 C:\Users\Ольга\Documents\Visual Studio 2015\Projects\AutoTrade\AutoTrade\obj\Debug\StartWindows.baml
 C:\Users\Ольга\Documents\Visual Studio 2015\Projects\AutoTrade\AutoTrade\obj\Debug\WorkWindows.baml
 C:\Users\Ольга\Documents\Visual Studio 2015\Projects\AutoTrade\AutoTrade\obj\Debug\App.baml
+C:\Users\Ольга\Documents\Visual Studio 2015\Projects\AutoTrade\AutoTrade\obj\Debug\AutoTrade_Content.g.cs

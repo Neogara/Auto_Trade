@@ -51,4 +51,13 @@ namespace AutoTrade
 
     }
 
+    class LogClass
+    {
+        public string Date { get; set; }
+        public string User { get; set; }
+        public string Disc { get; set; }
+        public string TableName { get; set; }
+
+    }
+
 }

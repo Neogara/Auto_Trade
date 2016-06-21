@@ -25,6 +25,7 @@ namespace AutoTrade
         public WorkWindows()
         {
             InitializeComponent();
+            
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -462,6 +463,47 @@ namespace AutoTrade
             LoginPage.Show();
             this.Close();
             
+        }
+        public void UpdateLogs(ListView ListData)
+        {
+            var SqlServer = new SqlConnection(WorkerClass.SqlConnect);
+        var dataSet = new DataSet();
+        var adapter = new SqlDataAdapter();
+        var cmd = new SqlCommand() { Connection = SqlServer };
+
+            cmd.CommandText = "select * from Dbo.DataBaseLog Where Table_name like 'dbo.Deels' ";
+
+            cmd.CommandType = System.Data.CommandType.Text;
+            adapter.SelectCommand = cmd;
+            SqlServer.Open();
+
+            ListData.Items.Clear();
+            try
+            {
+                adapter.Fill(dataSet);
+                foreach (DataRow Row in dataSet.Tables[0].Rows)
+                {
+                    var Table = new LogClass()
+                    {
+                        User = Row[0].ToString(),
+                        TableName = Row[1].ToString(),
+                        Date = Row[2].ToString(),
+                        Disc = Row[3].ToString()
+                };
+
+        ListData.Items.Add(Table);
+                }
+}
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Произошла ошибка \"{0}\"", ex.Message));
+            }
+            finally { SqlServer.Close(); }
+
+        }
+        private void ViewAllLogs_Selected(object sender, RoutedEventArgs e)
+        {
+            UpdateLogs(dataGrid_Log);
         }
     }
 }
